@@ -1,0 +1,41 @@
+---
+title: "EUROSTAT I GUS"
+author: "Anita Wachowicz"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output:html_document: 
+
+params:
+  sqlgraph: NA,
+  sqltable: NA,
+  sqlquery: NA,
+  tsgus: NA,
+  tsgusw: NA,
+  tseu: NA,
+  tseuw: NA
+---
+
+
+```{r, echo=FALSE}
+# tabelka
+if(!is.null(params$sqltable)){
+  cat("Result of query: ", params$sqlquery)
+  library(DT)
+  params$sqltable
+}
+```
+
+
+```{r, echo=FALSE}
+# wykres spod tabelki
+if(!is.null(params$sqlgraph))
+  plot(params$sqlgraph)
+
+if(!is.null(params$tsgus))
+  plot(params$tsgus)
+if(!is.null(params$tsgusw))
+  plot(params$tsgusw)
+if(!is.null(params$tseu))
+  plot(params$tseu)
+if(!is.null(params$tseuw))
+  plot(params$tseuw)
+```
